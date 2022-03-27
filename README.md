@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# 숭실대 유어슈 2022-1 Recruit 사전과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Drag & Drop 기능이 있는 Todo List 구현
 
-## Available Scripts
+## 새로 배운 점
+### json-server
+- 정의 : 짧은 시간에 REST API를 구축해주는 라이브러리
+- 이 프로그램을 사용해 테스트용, 공부용 데이터베이스를 만들어서 서버와 통신하는 것을 구현해볼 수 있다.
 
-In the project directory, you can run:
+### 로컬 스토리지(localStorage)
+웹 스토리지(web storage)에는 로컬 스토리지(localStorage)와 세션 스토리지(sessionStorage)가 있다.
+- 세션 스토리지 : 웹페이지의 세션이 끝날 때 저장된 데이터가 지워짐.
+- 로컬 스토리지 : 웹페이지의 세션이 끝나더라도 데이터가 지워지지 않음.
 
-### `npm start`
+#### 기본 API
+웹 스토리지는 기본적으로 키(key)와 값(value)으로 이루어진 데이터를 저장할 수 있다.
+```
+/*
+주의사항 : 오직 문자형(string) 데이터 타입만 지원
+*/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+// 키에 데이터 쓰기
+localStorage.setItem("key", value);
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// 키로 부터 데이터 읽기
+localStorage.getItem("key");
 
-### `npm test`
+// 키의 데이터 삭제
+localStorage.removeItem("key");
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+// 모든 키의 데이터 삭제
+localStorage.clear();
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+// 저장된 키/값 쌍의 개수
+localStorage.length;
+```
