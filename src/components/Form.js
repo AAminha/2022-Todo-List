@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import None from "components/None";
 import Reday from "components/Reday";
 import Ongoing from "components/Ongoing";
 import Done from "components/Done";
 
-function Form({list}) {
+function Form({ item }) {
+
+
   return(
     <div>
       <div>Form</div>
-      <None />
-      <Reday />
+      <None
+        item={item}
+      />
+      {/*<Reday />
       <Ongoing />
-      <Done />
+      <Done />*/}
     </div>
   )
 }
