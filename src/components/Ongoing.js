@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import MakeInput from "./MakeInput";
+import ShowItem from "./ShowItem";
 
-function Ongoing() {
-  return(
+const Ongoing = ({ listData, input, onRemove, onChange,
+  onKeyPress}) => {
+
+  const [click, setClick] = useState(false);
+  const onShow = listData
+    .filter((data) => data.state =='ongoing')
+    .map(({id, value}) => (
+      <ShowItem
+        key={id}
+        id={id}
+        value={value}
+        onRemove={onRemove}
+      />
+    ));
+
+  const onClick = () => {
+    setClick(!click);
+  }
+
+  return (
     <div>
-      <div>진행 중</div>
+      <span>=== 상태 없음(None) ===</span>
+      <div>
+        {onShow}
+      </div>
+      {click ?
+        <MakeInput
+          input={input}
+          onKeyPress={onKeyPress}
+          onChange={onChange}
+          state="ongoing"
+        />
+        : null}
+      <button onClick={onClick}>+ 새로 만들기</button>
+      <div>===================</div>
     </div>
   )
 }

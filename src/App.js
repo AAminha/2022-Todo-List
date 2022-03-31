@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 import None from "components/None";
+import Ongoing from "components/Ongoing";
+import Done from "components/Done";
+import Ready from "components/Ready";
 
 class App extends React.Component {
 
@@ -74,6 +77,30 @@ class App extends React.Component {
       <>
       {console.log(listData)}
         <None
+          listData={listData}
+          input={input}
+          onRemove={handleRemove}
+          onCreate={handleCreate}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+        />
+        <Ready
+          listData={listData}
+          input={input}
+          onRemove={handleRemove}
+          onCreate={handleCreate}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+        />
+        <Ongoing
+          listData={listData}
+          input={input}
+          onRemove={handleRemove}
+          onCreate={handleCreate}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+        />
+        <Done
           listData={listData}
           input={input}
           onRemove={handleRemove}

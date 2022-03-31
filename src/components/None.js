@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Done from "./Done";
+import React, { useState } from "react";
 import MakeInput from "./MakeInput";
 import ShowItem from "./ShowItem";
 
