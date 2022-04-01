@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import MakeInput from "./MakeInput";
 import ShowItem from "./ShowItem";
+import styles from "./Common.module.css"
 
-const Ongoing = ({ listData, input, onRemove, onChange,
-  onKeyPress}) => {
+const Ongoing = ({ listData, onRemove, onChange, onCreate}) => {
 
   const [click, setClick] = useState(false);
+  const [input, setInput] = useState('');
+
   const onShow = listData
     .filter((data) => data.state =='ongoing')
     .map(({id, value}) => (
@@ -21,9 +23,22 @@ const Ongoing = ({ listData, input, onRemove, onChange,
     setClick(!click);
   }
 
+  const onKeyPress = (e, state) => {
+    if (e.key === 'Enter') {
+      onCreate(state);
+      setClick(false);
+      setInput('');
+    }
+  }
+
+  const onInputChange = (e) => {
+    setInput(e.target.value);
+    onChange(e.target.value);
+  }
+
   return (
-    <div>
-      <span>=== 상태 없음(None) ===</span>
+    <div className={styles.section_form}>
+      <span>=== 진행 중(Ongoing) ===</span>
       <div>
         {onShow}
       </div>
@@ -31,11 +46,12 @@ const Ongoing = ({ listData, input, onRemove, onChange,
         <MakeInput
           input={input}
           onKeyPress={onKeyPress}
-          onChange={onChange}
+          onChange={onInputChange}
+          onClick={onClick}
           state="ongoing"
         />
         : null}
-      <button onClick={onClick}>+ 새로 만들기</button>
+      <button className={styles.new_btn} onClick={onClick}>+ 새로 만들기</button>
       <div>===================</div>
     </div>
   )

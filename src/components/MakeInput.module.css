@@ -1,0 +1,12 @@
+.input_form {
+  background-color: bisque;
+  width: 240px;
+  margin-bottom: 5px;
+}
+
+.new_input {
+  background-color: aquamarine;
+  border : none;
+  width: 210px;
+  margin : 10px;
+}

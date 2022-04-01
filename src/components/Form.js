@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import None from "components/None";
-import Reday from "components/Reday";
+import Reday from "components/Ready";
 import Ongoing from "components/Ongoing";
 import Done from "components/Done";
 

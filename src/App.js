@@ -4,6 +4,7 @@ import None from "components/None";
 import Ongoing from "components/Ongoing";
 import Done from "components/Done";
 import Ready from "components/Ready";
+import styles from "components/Common.module.css"
 
 class App extends React.Component {
 
@@ -26,12 +27,6 @@ class App extends React.Component {
     })
   }
 
-  handleKeyPress = (e, state) => {
-    if (e.key === 'Enter') {
-      this.handleCreate(state);
-    }
-  }
-
   handleRemove = (id) => {
     const { listData } = this.state;
     this.setState({
@@ -39,8 +34,8 @@ class App extends React.Component {
     });
   }
 
-  handleChange = (e) => {
-    this.setState({ input : e.target.value });
+  handleChange = (value) => {
+    this.setState({ input : value });
   }
 
   getList = async() => {
@@ -69,46 +64,36 @@ class App extends React.Component {
     const {
       handleCreate,
       handleRemove,
-      handleKeyPress,
       handleChange
     } = this;
     
     return (
-      <>
-      {console.log(listData)}
+      <div className={styles.main_form}>
         <None
           listData={listData}
-          input={input}
           onRemove={handleRemove}
           onCreate={handleCreate}
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
         />
         <Ready
           listData={listData}
-          input={input}
           onRemove={handleRemove}
           onCreate={handleCreate}
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
         />
         <Ongoing
           listData={listData}
-          input={input}
           onRemove={handleRemove}
           onCreate={handleCreate}
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
         />
         <Done
           listData={listData}
-          input={input}
           onRemove={handleRemove}
           onCreate={handleCreate}
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
         />
-      </>
+      </div>
     );
   }
 }
