@@ -32,7 +32,7 @@
   background-color: teal;
 }
 
-.more_btn {
+.more_btn_off {
   background-color: springgreen;
   border-radius: 5px;
   border: none;
@@ -40,10 +40,23 @@
   height: 25px;
   position : relative;
   top: 7.5px;
+  opacity: 0;
 }
 
-.more_btn:hover {
+.more_btn_off:hover {
   border : solid 1px rgb(156, 155, 155);
+  opacity: 1.0;
+}
+
+.more_btn_on {
+  background-color: springgreen;
+  border-radius: 5px;
+  border: none;
+  width : 30px;
+  height: 25px;
+  position : relative;
+  top: 7.5px;
+  opacity: 1.0;
 }
 
 .more_element {

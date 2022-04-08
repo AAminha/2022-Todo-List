@@ -1,20 +1,62 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./ShowItem.module.css";
 
-const ShowItem = ({ id, value, onRemove }) => {
+const ShowItem = ({ id, value, onRemove, onModify }) => {
   const [moreClick, setMoreClick] = useState(false);
+  const [grab, setGrab] = useState(null);
 
   const onClick = () => {
     setMoreClick(!moreClick);
   }
-  
+
+  const onDragOver = e => {  // onDrop 이벤트 활성화를 위해
+    e.preventDefault();
+  }
+
+  const onDragStart = e => { // drag를 위해 요소를 선택하면 발생
+    {console.log("onDragStart")}
+    setGrab(e.target);
+    e.target.classList.add("grabbing");
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", e.target);
+  }
+
+  const onDragEnd = e => { // drop 후 발생하는 이벤트
+    {console.log("onDragEnd")}
+    e.target.classList.remove("grabbing");
+    e.dataTransfer.dropEffect = "move";
+  }
+
+  const onDrop = e => {
+    {console.log("onDrag")}
+    //let grabPosition = Number(grab.dataset.position);
+    //let targetPosition = Number(e.target.dataset.position);
+
+    //let _list = [ ...lists ];
+    //_list[grabPosition] = _list.splice(targetPosition, 1, _list[grabPosition])[0];
+
+    //setLists(_list);
+  }
+
   return(
-    <div className={styles.list_form}>
+    <div
+      className={styles.list_form}
+      /* onDragOver={onDragOver}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      onDrop={onDrop}*/
+
+      draggable
+    >
       <div className={styles.list_data}>{value}</div>
-      <button className={styles.more_btn} onClick={onClick}>...</button>
+      <button 
+        className={moreClick ? styles.more_btn_on : styles.more_btn_off}
+        onClick={onClick}
+      >...</button>
       {moreClick ? 
         <Element
           onRemove={onRemove}
+          onModify={onModify}
           id={id}
           onClick={onClick}
         /> : null
@@ -23,7 +65,7 @@ const ShowItem = ({ id, value, onRemove }) => {
   )
 }
 
-function Element({ id, onRemove, onClick }) {
+function Element({ id, onRemove, onClick, onModify }) {
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, onClick);
 
@@ -31,10 +73,11 @@ function Element({ id, onRemove, onClick }) {
     <div ref={wrapperRef} className={styles.more_element}>
       <div className={styles.list_modify} onClick= {(e) => {
         e.stopPropagation()
-        //onModify()가 들어올 예정
+        onModify(id)
+        onClick()
       }}>"수정"</div>
       <div className={styles.list_remove} onClick = {(e) => {
-        e.stopPropagation()
+        e.stopPropagation() // 부모 엘리먼트에게 이벤트 전달을 중단해야 할 때 쓰임.
         onRemove(id)}
       }>"제거"</div>
     </div>
@@ -51,6 +94,7 @@ function useOutsideAlerter(ref, onClick) {
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
+        {console.log("뭐")}
         onClick();
       }
     }
