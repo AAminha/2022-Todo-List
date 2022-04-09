@@ -1,7 +1,7 @@
 .list_form {
   display: flex;
   flex-direction: row;
-  background-color: burlywood;
+  background-color: white;
   border : solid 1px rgba(0, 0, 0, 0.063);
   border-radius: 5px;
   width : 240px;
@@ -12,28 +12,29 @@
 }
 
 .list_form:hover {
-  border : solid 1px rgb(156, 155, 155);
+  background-color: rgba(180, 236, 255, 0.414);
 }
 
 .list_data {
-  background-color: tomato;
-  width : 195px;
+  width : 187px;
   height: 30px;
   line-height: 30px;
-  margin : 5px 5px 5px 5px;
+  margin : 5px 5px 5px 10px;
   font-weight: 500;
 }
 
-.list_modify {
-  background-color: thistle;
+.list_item {
+  padding: 3px;
+  height: 22px;
 }
 
-.list_remove {
-  background-color: teal;
+.list_item:hover {
+  background-color: rgb(161, 161, 161);
 }
 
 .more_btn_off {
-  background-color: springgreen;
+  background-color: white;
+  font-size: 18px;
   border-radius: 5px;
   border: none;
   width : 30px;
@@ -49,19 +50,19 @@
 }
 
 .more_btn_on {
-  background-color: springgreen;
+  background-color: rgba(169, 169, 169, 0.693);
+  font-size: 18px;
   border-radius: 5px;
   border: none;
   width : 30px;
   height: 25px;
   position : relative;
   top: 7.5px;
-  opacity: 1.0;
 }
 
 .more_element {
-  background-color: steelblue;
-  width: 55px;
+  background-color: rgb(225, 225, 225);
+  width: 60px;
   position : absolute;
   left : 180px;
   top : 33px;

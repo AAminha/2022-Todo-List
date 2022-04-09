@@ -1,16 +1,30 @@
 import React from "react";
 import ShowSearchItem from "./ShowSearchItem";
+import styles from "./Search.module.css"
 
-function SearchItem({listData, searchItem}) {
-  const resItem = listData.filter((element) => 
-    element.value.toLowerCase().indexOf(searchItem.toLowerCase()) !== -1
-  )
+function SearchItem({listState, searchItem}) {
+  var resItem = [];
+  
+  listState.map((state) => {
+    var stateValue = JSON.parse(localStorage.getItem(state));
+    const data = {
+      state : state,
+      value : stateValue.filter(item => (
+        item.toLowerCase().indexOf(searchItem.toLowerCase()) !== -1
+      ))
+    }
+    resItem.push(data);
+  })
 
   return(
-    <div>
+    <div className={styles.search_result_form}>
       <h3>{`'${searchItem}'에 대한 검색결과`}</h3>
-      {resItem.map((tt) => (
-        <ShowSearchItem item={tt}/>
+      {(resItem.filter((item) => item.value.length !== 0)
+        .map((item, index) => 
+        <ShowSearchItem
+          key={index}
+          item={item}
+        />
       ))}
     </div>
   )

@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./ShowItem.module.css";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 const ShowItem = ({ id, value, onRemove, onModify }) => {
   const [moreClick, setMoreClick] = useState(false);
   const [grab, setGrab] = useState(null);
 
+  const setDragItemId = 1;
   const onClick = () => {
     setMoreClick(!moreClick);
   }
@@ -13,22 +15,30 @@ const ShowItem = ({ id, value, onRemove, onModify }) => {
     e.preventDefault();
   }
 
-  const onDragStart = e => { // drag를 위해 요소를 선택하면 발생
+  const onDragStart = e => {
     {console.log("onDragStart")}
-    setGrab(e.target);
-    e.target.classList.add("grabbing");
     e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("text/html", e.target);
+    e.dataTransfer.setData("text/html", e.currentTarget);
+    console.log(e.currentTarget)
   }
 
-  const onDragEnd = e => { // drop 후 발생하는 이벤트
+  /* const onDragEnter = (e: React.DragEvent<HTMLElement>): void => {
+    setDragItemId.interSectItem(todo.id);
+  } */
+
+  // https://watermelonlike.tistory.com/entry/Drag-n-Drop-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98?category=861516
+
+  const onDragEnd = e => {
     {console.log("onDragEnd")}
-    e.target.classList.remove("grabbing");
+    console.log(e.document);
+    console.log(e.target)
     e.dataTransfer.dropEffect = "move";
   }
 
-  const onDrop = e => {
-    {console.log("onDrag")}
+  const onDragDrop = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    {console.log("onDragDrop")}
     //let grabPosition = Number(grab.dataset.position);
     //let targetPosition = Number(e.target.dataset.position);
 
@@ -41,24 +51,25 @@ const ShowItem = ({ id, value, onRemove, onModify }) => {
   return(
     <div
       className={styles.list_form}
-      /* onDragOver={onDragOver}
+      
+      onDragOver={onDragOver}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
-      onDrop={onDrop}*/
+      onDrop={onDragDrop}
 
-      draggable
+      draggable={true}
     >
       <div className={styles.list_data}>{value}</div>
       <button 
         className={moreClick ? styles.more_btn_on : styles.more_btn_off}
         onClick={onClick}
-      >...</button>
+      ><FiMoreHorizontal/></button>
       {moreClick ? 
         <Element
           onRemove={onRemove}
           onModify={onModify}
           id={id}
-          onClick={onClick}
+          onMoreClick={onClick}
         /> : null
       }
     </div>
@@ -71,15 +82,14 @@ function Element({ id, onRemove, onClick, onModify }) {
 
   return (
     <div ref={wrapperRef} className={styles.more_element}>
-      <div className={styles.list_modify} onClick= {(e) => {
+      <div className={styles.list_item} onClick= {(e) => {
         e.stopPropagation()
         onModify(id)
-        onClick()
-      }}>"수정"</div>
-      <div className={styles.list_remove} onClick = {(e) => {
+      }}>수정</div>
+      <div className={styles.list_item} onClick = {(e) => {
         e.stopPropagation() // 부모 엘리먼트에게 이벤트 전달을 중단해야 할 때 쓰임.
         onRemove(id)}
-      }>"제거"</div>
+      }>제거</div>
     </div>
   );
 }

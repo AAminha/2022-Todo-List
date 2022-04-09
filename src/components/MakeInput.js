@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./MakeInput.module.css"
 
-const MakeInput = ({ state, input, onKeyPress, onChange, onClick }) => {
+const MakeInput = ({ input, onKeyPress, onChange, onClick }) => {
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, onClick);
 
@@ -9,10 +9,10 @@ const MakeInput = ({ state, input, onKeyPress, onChange, onClick }) => {
     <div ref={wrapperRef} className={styles.input_form}>
       <input
         className={styles.new_input}
-        placeholder="제목을 입력하세요"
+        placeholder="내용을 입력하세요"
         value={input}
         onChange={onChange}
-        onKeyPress={(e) => onKeyPress(e, state)}
+        onKeyPress={(e) => onKeyPress(e)}
       />
     </div>
   )

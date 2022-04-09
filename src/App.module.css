@@ -1,0 +1,26 @@
+.main_form {
+  margin-top : 100px;
+  margin-bottom: 100px;
+}
+
+.header {
+  background-color: white;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.374);
+  padding-bottom: 15px;
+}
+
+.main_title {
+  width: 450px;
+  padding: 30px 10px 10px 10px;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 3px solid gray;
+}
+
+.state_main_form {
+  display: flex;
+  padding-top: 20px;
+  background-color: white;
+  justify-content: center;
+  box-sizing : border-box;
+}

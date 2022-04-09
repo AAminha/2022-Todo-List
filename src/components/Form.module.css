@@ -1,0 +1,44 @@
+.state_section_form {
+  background-color: white;
+  padding: 10px;
+  padding-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.state_section {
+  padding: 2px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.state_section_name {
+  background-color: rgba(153, 230, 255, 0.688);
+  display:inline-block;
+  font-size: 15px;
+}
+
+.state_section_count {
+  margin-left: 10px;
+  color: rgb(104, 104, 104);
+  font-weight: 400;
+}
+
+.new_btn {
+  background-color: white;
+  box-sizing: border-box;
+  text-align: left;
+  padding-left: 15px;
+  color:rgb(104, 104, 104);
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  width: 240px;
+  height: 25px;
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+.new_btn:hover {
+  background-color: rgb(207, 207, 207);
+}

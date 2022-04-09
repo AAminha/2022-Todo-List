@@ -52,3 +52,22 @@ ex) 네이버 검색창에 "naver"를 검색하는 경우
 - 리액트의 Hook 중 하나인 useEffect 사용
 - 디바운스 관련 메소드 : `lodash`
 [참코 링크](https://hwani.dev/react-debouncing/)
+
+
+### Drag Event
+HTML tag에 `draggable`속성을 주면 해당 요소를 드래깅할 수 있다.
+
+#### 웹 API에서 지원되는 Events
+`onDrag` : item을 잡았을 때 발생하는 이벤트
+`onDragEnter` : 잡은 item이 다른 item이랑 겹쳤을 때 발생하는 이벤트
+`onDragLeave` : 잡은 item이 다른 item을 떠났을 때 발생하는 이벤트
+`onDragOver` : 잡은 item이 다른 item과 겹쳐졌을 때 밀리초마다 발생하는 이벤트
+`onDragStart` : item을 잡기 시작했을 때 발생하는 이벤트
+`onDrop` : 잡은 item을 적절한 곳에 놓았을 때 발생하는 이벤트
+`onDragEnd` : 잡은 item을 놓았을 때 발생하는 이벤트
+
+
+### 추가) useRef
+1. DOM을 선택하는 용도
+2. 컴포넌트 안에서 조회 및 수정할 수 있는 변수 관리 (변수 값이 바뀌어도 리렌더링 하지 않음.)
+[참고 자료](https://react.vlpt.us/basic/12-variable-with-useRef.html)

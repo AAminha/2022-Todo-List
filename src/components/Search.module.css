@@ -1,3 +1,58 @@
-.test {
-  background-color: slategrey;
+.search_main_form {
+  height: 27px;
+  padding-top: 10px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 6px;
+  line-height: 32px;
+  height: 25px;
+  position: relative;
+  bottom: 7px;
+}
+
+.search_input {
+  position:relative;
+  bottom: 12px;
+  margin: 6px;
+  width: 250px;
+  height: 15px;
+  border-radius: 10px;
+  border: 2px solid rgb(33, 199, 255);
+  padding: 5px;
+}
+
+.search_result_form {
+  background-color: white;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px 30px 20px 30px;
+}
+
+.result_item {
+  display: flex;
+  width: 290px;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.result_item_state {
+  line-height: 23px;
+  color:rgb(33, 199, 255);
+  width: 70px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.result_item_value {
+  font-size: 18px;
+  margin-bottom: 4px;
 }
