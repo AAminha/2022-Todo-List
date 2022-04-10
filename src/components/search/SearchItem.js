@@ -1,9 +1,9 @@
 import React from "react";
-import ShowSearchItem from "./ShowSearchItem";
-import styles from "./Search.module.css"
+import ShowSearchItem from "components/search/ShowSearchItem";
+import styles from "components/css/Search.module.css"
 
 function SearchItem({listState, searchItem}) {
-  var resItem = [];
+  var resultItem = [];
   
   listState.map((state) => {
     var stateValue = JSON.parse(localStorage.getItem(state));
@@ -13,17 +13,17 @@ function SearchItem({listState, searchItem}) {
         item.toLowerCase().indexOf(searchItem.toLowerCase()) !== -1
       ))
     }
-    resItem.push(data);
+    resultItem.push(data);
   })
 
   return(
     <div className={styles.search_result_form}>
       <h3>{`'${searchItem}'에 대한 검색결과`}</h3>
-      {(resItem.filter((item) => item.value.length !== 0)
+      {(resultItem.filter((item) => item.value.length !== 0)
         .map((item, index) => 
         <ShowSearchItem
           key={index}
-          item={item}
+          result={item}
         />
       ))}
     </div>

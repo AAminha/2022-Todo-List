@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import styles from "./MakeInput.module.css"
+import styles from "components/css/MakeInput.module.css"
 
 const MakeInput = ({ input, onKeyPress, onChange, onClick }) => {
   const wrapperRef = useRef(null);
@@ -26,10 +26,8 @@ function useOutsideAlerter(ref, onClick) {
       }
     }
 
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref]);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Search.module.css"
+import styles from "components/css/Search.module.css"
 import { debounce } from "lodash";
 
 const debounceSomethingFunc = debounce((onSearchChange, value) => {
@@ -22,7 +22,7 @@ function Search ({onSearchChange}) {
         className={styles.search_input}
         type="text"
         value={text} 
-        placeholder="검색어를 입력하세요"
+        placeholder="입력하세요"
         onChange={onChange} 
       />
     </div>

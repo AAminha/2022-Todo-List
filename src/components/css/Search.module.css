@@ -29,9 +29,9 @@
 .search_result_form {
   background-color: white;
   width: 400px;
+  padding: 10px 30px 20px 30px;
   margin: 0 auto;
   margin-top: 20px;
-  padding: 10px 30px 20px 30px;
 }
 
 .result_item {

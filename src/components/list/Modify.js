@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import styles from "./MakeInput.module.css"
+import styles from "components/css/MakeInput.module.css"
 
-const Modify = ({ id, input, onKeyPress, onChange, onClick }) => {
+const Modify = ({ id, input, onKeyPress, onChange, onOutClick }) => {
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, onClick);
+  useOutsideAlerter(wrapperRef, onOutClick);
 
   return (
     <div ref={wrapperRef} className={styles.input_form}>
@@ -17,18 +17,16 @@ const Modify = ({ id, input, onKeyPress, onChange, onClick }) => {
   )
 }
 
-function useOutsideAlerter(ref, onClick) {
+function useOutsideAlerter(ref, onOutClick) {
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
-        onClick();
+        onOutClick();
       }
     }
 
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref]);
