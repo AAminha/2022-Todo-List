@@ -8,8 +8,6 @@ onDragStart, onDragOver, onDragLeave, onDrop, onDragEnter, onDragEnd}) => {
   const [moreClick, setMoreClick] = useState(false);
 
   const onMoreClick = () => {
-    {console.log("onMoreClick 실행")}
-    {console.log(!moreClick)}
     setMoreClick(!moreClick);
   }
 
@@ -26,8 +24,6 @@ onDragStart, onDragOver, onDragLeave, onDrop, onDragEnter, onDragEnd}) => {
       onDragEnd={onDragEnd}
       data-position={id}
     >
-      {console.log(value)}
-      {console.log(moreClick)}
       <div className={styles.list_data}>{value}</div>
       <button 
         className={moreClick ? styles.more_btn_on : styles.more_btn_off}
@@ -44,7 +40,6 @@ onDragStart, onDragOver, onDragLeave, onDrop, onDragEnter, onDragEnd}) => {
           setMoreClick={setMoreClick}
         /> : null
       }
-      {console.log("===============")}
     </div>
   )
 }
