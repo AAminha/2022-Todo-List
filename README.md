@@ -1,4 +1,4 @@
-# 숭실대 유어슈 2022-1 Recruit 사전과제
+# 2022 새로운 Todo List
 
 Drag & Drop 기능이 있는 Todo List 구현
 
